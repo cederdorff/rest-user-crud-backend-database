@@ -45,7 +45,7 @@ app.get("/users", (request, response) => {
 // get one user from database by given id
 app.get("/users/:id", (request, response) => {
     const id = request.params.id;
-    const query = `SELECT * FROM users WHERE id=${id};`;
+    const query = `SELECT * FROM users WHERE id=${id};`; // sql query
 
     mysqlConnection.query(query, (error, results, fields) => {
         console.log(results);
@@ -61,7 +61,7 @@ app.get("/users/:id", (request, response) => {
 // create user
 app.post("/users", (request, response) => {
     const newUser = request.body;
-    const query = `INSERT INTO users(name, mail, title, image) values("${newUser.name}", "${newUser.mail}", "${newUser.title}", "${newUser.image}");`;
+    const query = `INSERT INTO users(name, mail, title, image) values("${newUser.name}", "${newUser.mail}", "${newUser.title}", "${newUser.image}");`; // sql query
 
     mysqlConnection.query(query, (error, results, fields) => {
         if (error) {
@@ -77,7 +77,7 @@ app.post("/users", (request, response) => {
 app.put("/users/:id", (request, response) => {
     const id = request.params.id;
     const user = request.body;
-    const query = `UPDATE users SET name="${user.name}", mail="${user.mail}", title="${user.title}", image="${user.image}" WHERE id=${id};`;
+    const query = `UPDATE users SET name="${user.name}", mail="${user.mail}", title="${user.title}", image="${user.image}" WHERE id=${id};`; // sql query
 
     mysqlConnection.query(query, (error, results, fields) => {
         if (error) {
@@ -92,7 +92,7 @@ app.put("/users/:id", (request, response) => {
 // delete user by given id
 app.delete("/users/:id", (request, response) => {
     const id = request.params.id;
-    const query = `DELETE FROM users WHERE id=${id};`;
+    const query = `DELETE FROM users WHERE id=${id};`; // sql query
 
     mysqlConnection.query(query, (error, results, fields) => {
         if (error) {
