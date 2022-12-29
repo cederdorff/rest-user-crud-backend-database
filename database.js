@@ -1,7 +1,8 @@
-const mysql = require("mysql2");
-// Read the environment variables
-require("dotenv").config();
+const mysql = require("mysql2"); // using mysql2 - an install npm library
+require("dotenv").config(); // Read the environment variables
 
+// using the variables from the .env file
+// and creates the connection to database
 const mysqlConnection = mysql.createConnection({
     host: process.env.HOST,
     port: process.env.DATABASE_PORT,
@@ -11,13 +12,5 @@ const mysqlConnection = mysql.createConnection({
     multipleStatements: true
 });
 
-mysqlConnection.connect(error => {
-    if (error) {
-        console.log(err);
-        console.log("Connection Failed");
-    } else {
-        console.log("Connected");
-    }
-});
-
+// exports database connection
 module.exports = mysqlConnection;
